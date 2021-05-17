@@ -15,12 +15,14 @@ Funds are deposited/withdrawn using a configurable token (e.g. USDC, ETH, ...).
 
 ## Install packages
 
-Initial setup:
+Install *truffle* and *ganache-cli*:
 
     npm install truffle -g
     npm install -g ganache-cli
-    npm install chai truffle-assertions
-    npm install --save-dev solidity-coverage
+	
+Install dependencies:
+
+	npm install
 
 ## Compile
 
