@@ -19,16 +19,16 @@ Install *truffle* and *ganache-cli*:
 
     npm install truffle -g
     npm install -g ganache-cli
-	
+
 Install dependencies:
 
-	npm install
+    yarn
 
 ## Compile
 
 To compile the contract:
 
-    truffle compile
+    yarn compile
 
 ## Run tests
 
@@ -40,11 +40,11 @@ Then:
 
 - To run tests without coverage:
 
-        truffle test
+        yarn test
 
 - To run tests with coverage:
 
-        truffle run coverage
+        yarn coverage
 
 # Description
 
