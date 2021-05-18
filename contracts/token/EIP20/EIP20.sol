@@ -26,17 +26,17 @@ contract EIP20 is Context, IEIP20 {
      * Variables
      */
 
-    /// Map addresses to balances
+    // Map addresses to balances
     mapping (address => uint256) private _balances;
-    /// Map addresses to spender allowances
+    // Map addresses to spender allowances
     mapping (address => mapping (address => uint256)) private _allowances;
-    /// Total supply
+    // Total supply
     uint256 private _totalSupply;
-    /// Token name
+    // Token name
     string private _name;
-    /// Token symbol
+    // Token symbol
     string private _symbol;
-    /// Token decimal points
+    // Token decimal points
     uint8 private _decimals;
 
     /*

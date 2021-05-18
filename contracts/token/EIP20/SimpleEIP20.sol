@@ -15,7 +15,7 @@ abstract contract SimpleEIP20 is EIP20 {
      * Constants
      */
 
-    /// Decimal points
+    // Decimal points
     uint8 constant DECIMAL_POINTS = 18;
 
     /*

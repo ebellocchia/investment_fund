@@ -10,16 +10,16 @@ abstract contract ReentrancyGuard {
      * Constants
      */
 
-    /// Constant for not entered state
+    // Constant for not entered state
     uint256 private constant _NOT_ENTERED = 1;
-    /// Constant for entered state
+    // Constant for entered state
     uint256 private constant _ENTERED = 2;
 
     /*
      * Variables
      */
 
-    /// Status
+    // Status
     uint256 private status;
 
     /*
