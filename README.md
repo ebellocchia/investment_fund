@@ -17,7 +17,8 @@ Funds are deposited/withdrawn using a configurable token (e.g. USDC, ETH, ...).
 
 Install *truffle* and *ganache-cli*:
 
-    npm install truffle -g
+    npm install -g yarn
+    npm install -g truffle
     npm install -g ganache-cli
 
 Install dependencies:
