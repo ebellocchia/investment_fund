@@ -1,0 +1,15 @@
+abi
+docs
+node_modules
+coverage
+coverage.json
+metadata
+package-lock.json
+typechain
+typechain-types
+yarn.lock
+*Flattened.sol
+
+# Hardhat files
+cache
+artifacts

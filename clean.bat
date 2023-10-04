@@ -1,0 +1,11 @@
+rmdir /s /q abi 2>nul
+rmdir /s /q artifacts 2>nul
+rmdir /s /q cache 2>nul
+rmdir /s /q coverage 2>nul
+rmdir /s /q docs 2>nul
+rmdir /s /q metadata 2>nul
+rmdir /s /q node_modules 2>nul
+rmdir /s /q typechain-types 2>nul
+del /f /q package-lock.json 2>nul
+del /f /q coverage.json 2>nul
+del /f /q *Flattened.sol 2>nul
