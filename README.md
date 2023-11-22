@@ -1,4 +1,8 @@
-# Introduction
+# Investment Fund
+[![Build](https://github.com/ebellocchia/investment_fund/actions/workflows/build.yml/badge.svg)](https://github.com/ebellocchia/investment_fund/actions/workflows/build.yml)
+[![Test](https://github.com/ebellocchia/investment_fund/actions/workflows/test.yml/badge.svg)](https://github.com/ebellocchia/investment_fund/actions/workflows/test.yml)
+
+## Introduction
 
 The contract implements the functionality of an investment fund. The idea is the following:
 
@@ -9,19 +13,19 @@ The contract implements the functionality of an investment fund. The idea is the
 Clearly, investors shall trust the fund manager to behave properly and not stealing the funds. The fund manager is free to keep a percentage as fee before depositing funds back, at his choice.\
 Funds are deposited/withdrawn using a configurable token (e.g. USDC, ETH, ...).
 
-# Setup
+## Setup
 
 Install `yarn` if not installed:
 
     npm install -g yarn
 
-## Install package
+### Install package
 
 Simply run:
 
     npm i --include=dev
 
-## Compile
+### Compile
 
 - To compile the contract:
 
@@ -31,7 +35,7 @@ Simply run:
 
         yarn recompile
 
-## Run tests
+### Run tests
 
 - To run tests without coverage:
 
@@ -41,7 +45,7 @@ Simply run:
 
         yarn coverage
 
-## Deploy
+### Deploy
 
 - Deploy in test mode (a `MockToken` will be automatically deployed with the specified supply and used as fund token):
 
@@ -51,7 +55,7 @@ Simply run:
 
         yarn deploy-live <NETWORK> --token-address <TOKEN_ADDRESS>
 
-## Configuration
+### Configuration
 
 Hardhat is configured with the following networks:
 
@@ -69,9 +73,9 @@ Hardhat is configured with the following networks:
 The API keys, RPC nodes and mnemonic shall be configured in the `.env` file.\
 You may need to modify the gas limit and price in the Hardhat configuration file for some networks (e.g. Polygon), to successfully execute the transactions (you'll get a gas error).
 
-# Description
+## Description
 
-## Construction
+### Construction
 
 At construction, the address of the token used for depositing/withdrawing shall be specified as parameter. The token can also be changed later using the *setFundToken* function.\
 Beside this, the contract is initialized as follows:
@@ -86,19 +90,19 @@ Beside this, the contract is initialized as follows:
 |Minimum investor deposit|1|
 |Maximum investor deposit|Infinite (i.e. -1)|
 
-## View functions
+### View functions
 
 - `numberOfInvestors()`: get the total number of investors
 - `allInvestors()`: get an array with all investors addresses
 - `depositOfInvestor(address investor)`: get the deposit of the specified investor address
 - `totalDepositedFunds()`: get the total deposited funds
 
-## Contract states
+### Contract states
 
 The process to invest funds is made of different steps, so the contract implements a state machine to control this.\
 The states are described in the next paragraphs.
 
-### STATE_INITIAL
+#### STATE_INITIAL
 
 This state is the first one and it's used to configure the investment parameters. Only the fund manager can operate in this state.\
 The functions that can be called are:
@@ -114,7 +118,7 @@ The functions that can be called are:
 |`setMaxInvestorDeposit(uint256 amount)`|Fund manager|Set the maximum amount that investors can invest|
 |`startInvestorsDeposit()`|Fund manager|Go to the next state, allowing investors to deposit funds|
 
-### STATE_BEFORE_INVESTMENT
+#### STATE_BEFORE_INVESTMENT
 
 This state is used by investors to deposit funds.\
 The functions that can be called are:
@@ -127,7 +131,7 @@ The functions that can be called are:
 
 When *stopInvestorsDeposit* is called, the amount of funds before starting the investment is stored.
 
-### STATE_DURING_INVESTMENT
+#### STATE_DURING_INVESTMENT
 
 This state is used by the fund manager to invest the deposited funds. When the investment is finished, funds are deposited back to the contract so that investors can withdraw them.\
 The functions that can be called are:
@@ -151,7 +155,7 @@ Of course, the operation is performed using integers so a factor of *1e12* (12 d
 
     inv_multiplier = (amount_after_investment * 1e12) / amount_before_investment
 
-### STATE_AFTER_INVESTMENT
+#### STATE_AFTER_INVESTMENT
 
 This state is used by investors to withdraw back their funds when the investment is finished.\
 The functions that can be called are:
@@ -168,3 +172,7 @@ The amount of funds withdrawn by an investor is proportional to the investment m
     withdrawn_amount = (deposited_amout * inv_multiplier) / 1e12
 
 When *stopInvestorsWithdraw* is called, any remaining fund in the contract (either because it's not withdrawn or due to division rounding) will be sent to the remaining fund address.
+
+# License
+
+This software is available under the MIT license.
