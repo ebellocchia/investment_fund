@@ -10,4 +10,4 @@ rm -rf node_modules
 rm -rf typechain-types
 rm -f package-lock.json
 rm -f coverage.json
-rm -f *Flattened.sol
+rm -f ./*Flattened.sol
