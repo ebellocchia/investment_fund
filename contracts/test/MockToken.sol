@@ -5,15 +5,15 @@ pragma solidity ^0.8.0;
 //=============================================================//
 //                           IMPORTS                           //
 //=============================================================//
-import "./ERC20FixedSupply.sol";
+import {ERC20FixedSupply} from "./ERC20FixedSupply.sol";
 
 
 /**
  * @author Emanuele Bellocchia (ebellocchia@gmail.com)
  * @title  Mock ERC20 token
  */
-contract MockERC20Token is 
-    ERC20FixedSupply 
+contract MockERC20Token is
+    ERC20FixedSupply
 {
     //=============================================================//
     //                           CONSTANTS                         //
