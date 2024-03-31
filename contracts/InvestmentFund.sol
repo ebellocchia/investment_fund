@@ -197,7 +197,7 @@ contract InvestmentFund is
     );
 
     /**
-     * Event emitted when funds are3 deposited by fund manager during investment
+     * Event emitted when funds are deposited by fund manager during investment
      * @param fundManager Fund manager addres
      * @param amount      Amount
      */
